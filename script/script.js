@@ -10,12 +10,19 @@ const getData = async (endPoint) => {
     } catch (err) {
         return false;
     }
+}
 
+const redirectToItemPage = (item) => {
+    window.location.replace(`./item.html?itemId=${item.id}`);
 }
 
 const buildItemWrapper = (item) => {
     const itemWrapper = document.createElement(`div`);
     itemWrapper.classList.add(`item-wrapper`);
+
+    itemWrapper.addEventListener(`click`, () => {
+        redirectToItemPage(item);
+    })
 
     const itemName = document.createElement(`h3`);
     itemName.innerText = item.name;
