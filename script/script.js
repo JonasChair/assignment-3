@@ -1,8 +1,6 @@
-const log = (logs) => console.log(logs);
 
-const LINK = `https://64ec7004f9b2b70f2bfa53e4.mockapi.io`
 
-import {buildContent} from "./src/sharedFuctions.js";
+import {buildContent, LINK} from "./src/sharedFuctions.js";
 
 const redirectToItemPage = (item) => {
     window.location.replace(`./item.html?itemId=${item.id}`);

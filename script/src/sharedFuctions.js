@@ -1,3 +1,7 @@
+export const log = (logs) => console.log(logs);
+
+export const LINK = `https://64ec7004f9b2b70f2bfa53e4.mockapi.io`
+
 export const getData = async (endPoint) => {
     try {
         const response = await fetch(endPoint);
