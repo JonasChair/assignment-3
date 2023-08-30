@@ -1,6 +1,6 @@
-export const log = (logs) => console.log(logs);
-
 export const API_URL = `https://64ec7004f9b2b70f2bfa53e4.mockapi.io`
+
+export const log = (logs) => console.log(logs);
 
 export const getData = async (endPoint) => {
     try {
@@ -12,15 +12,15 @@ export const getData = async (endPoint) => {
     }
 };
 
-export const buildContentWrapper = (data,builder) => {
+export const buildContentWrapper = (data, builder) => {
     if (data) {
         return builder(data);
     } else {
-        return buildMessageWrapper(`Something went wrong while getting the data, please try again.`,`error`);
+        return buildMessageWrapper(`Something went wrong while getting the data, please try again.`, `error`);
     }
 }
 
-const buildMessageWrapper = (message,status) => {
+export const buildMessageWrapper = (message, status) => {
     const messageWrapper = document.createElement(`div`);
     messageWrapper.classList.add(`message`);
     messageWrapper.innerText = message;
@@ -34,13 +34,13 @@ const buildMessageWrapper = (message,status) => {
     return messageWrapper;
 }
 
-const displayContent = (content,wrapper) => {
+export const displayContent = (content, wrapperId) => {
+    const wrapper = document.getElementById(wrapperId);
     wrapper.append(content);
 }
 
-export const buildContent = async (dataEndpoint,builder,wrapperId) => {
-    const wrapper = document.getElementById(wrapperId);
+export const buildContent = async (dataEndpoint, builder, wrapperId) => {
     const data = await getData(dataEndpoint);
-    const content = buildContentWrapper(data,builder);
-    displayContent(content,wrapper);
+    const content = buildContentWrapper(data, builder);
+    displayContent(content, wrapperId);
 }
