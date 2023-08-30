@@ -75,7 +75,6 @@ const createItem = () => {
         const dataName = input.id.slice(input.id.indexOf(`-`) + 1);
         item[dataName] = input.value;
     });
-    console.log(item);
     return item;
 };
 
@@ -91,7 +90,6 @@ const postItemData = async (item) => {
             body: JSON.stringify(item)
         })
         const addedItem = await response.json();
-        console.log(addedItem);
         return addedItem;
     } catch (err) {
         return false;
