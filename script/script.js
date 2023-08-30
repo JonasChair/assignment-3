@@ -1,6 +1,6 @@
 
 
-import {buildContent, LINK} from "./src/sharedFuctions.js";
+import {buildContent, API_URL} from "./src/sharedFuctions.js";
 
 const redirectToItemPage = (item) => {
     window.location.replace(`./item.html?itemId=${item.id}`);
@@ -45,4 +45,4 @@ const buildItemsWrapper = (data) => {
     return itemsWrapper;
 }
 
-buildContent(`${LINK}/items`,buildItemsWrapper,'main');
+buildContent(`${API_URL}/items`,buildItemsWrapper,'main');
