@@ -9,7 +9,7 @@ const deleteItem = async (item) => {
     })
     const deletedItem = await response.json();
     if (deletedItem) {
-        main.append(buildMessageWrapper(`Item: "${deletedItem.name}", has been deleted`));
+        main.append(buildMessageWrapper(`Item: "${deletedItem.name}" has been deleted`));
     } else {
         main.append(buildMessageWrapper(`Something went wrong, please try again.`, `error`));
     }

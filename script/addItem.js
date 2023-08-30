@@ -1,9 +1,9 @@
-import { API_URL, displayContent, buildForm} from "./src/sharedFuctions.js";
-
+import { displayContent } from "./src/sharedFuctions.js";
+import { buildForm } from "./src/formControl.js";
 const inputs = [
     {
         id: `item-name`,
-        placeholder: `Input item name`,
+        placeholder: `Input item name (min 3 characters)`,
         type: `text`
     },
     {
@@ -12,8 +12,8 @@ const inputs = [
         type: `number`
     },
     {
-        id: `item-immage`,
-        placeholder: `Item immage url`,
+        id: `item-image`,
+        placeholder: `Item image url`,
         type: `text`
     },
     {

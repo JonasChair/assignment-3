@@ -57,6 +57,7 @@ main {
 }
 
 .success {
+    border-color: rgb(1, 233, 1);
     color: green;
 }
 
