@@ -98,7 +98,7 @@ const postItemData = async (item) => {
     }
 }
 
-const clearInputFields = (inputFields) =>{
+const clearInputFields = (inputFields) => {
     inputFields.forEach(input => {
         input.value = ``;
         input.classList.remove(`success`);
@@ -127,7 +127,7 @@ const onClickSubmitItem = async () => {
 const buildInput = (inputId, placeholder, inputType) => {
     const inputWrapper = document.createElement(`div`);
     inputWrapper.classList.add(`input-wrapper`);
-    
+
     const input = document.createElement(inputType === `button` ? inputType : `input`);
     input.id = inputId;
 
@@ -136,7 +136,7 @@ const buildInput = (inputId, placeholder, inputType) => {
         input.addEventListener(`click`, onClickSubmitItem)
         const responseMessageWrapper = document.createElement(`div`);
         responseMessageWrapper.id = `response-message-wrapper`;
-        inputWrapper.append(input,responseMessageWrapper);
+        inputWrapper.append(input, responseMessageWrapper);
     } else {
         input.type = inputType;
         input.placeholder = placeholder;
@@ -148,7 +148,7 @@ const buildInput = (inputId, placeholder, inputType) => {
         validationMessageWrapper.classList.add(`validation-message`);
         inputWrapper.append(input, validationMessageWrapper);
     }
-    
+
     return inputWrapper;
 }
 

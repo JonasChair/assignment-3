@@ -1,4 +1,4 @@
-import {buildContent, API_URL} from "./src/sharedFuctions.js";
+import { buildContent, API_URL } from "./src/sharedFuctions.js";
 
 const redirectToItemPage = (item) => {
     window.location.replace(`./item.html?itemId=${item.id}`);
@@ -20,11 +20,11 @@ const buildItemWrapper = (item) => {
 
     const itemPrice = document.createElement(`div`);
     itemPrice.innerText = `${item.price}€`;
-    
+
     const itemTextWrapper = document.createElement(`div`);
     itemTextWrapper.classList.add(`item-text-wrapper`);
-    itemTextWrapper.append(itemName,itemPrice);
-    
+    itemTextWrapper.append(itemName, itemPrice);
+
     itemWrapper.append(itemImage);
     itemWrapper.append(itemTextWrapper);
 
@@ -35,12 +35,14 @@ const buildItemsWrapper = (data) => {
     const itemsWrapper = document.createElement(`div`);
     itemsWrapper.classList.add(`items-wrapper`);
 
-    data.forEach( (item) => {
-        const itemWrapper = buildItemWrapper(item);
-        itemsWrapper.append(itemWrapper);
-    });
+    data
+        .sort((a, b) => a.price - b.price)
+        .forEach((item) => {
+            const itemWrapper = buildItemWrapper(item);
+            itemsWrapper.append(itemWrapper);
+        });
 
     return itemsWrapper;
 }
 
-buildContent(`${API_URL}/items`,buildItemsWrapper,'main');
+buildContent(`${API_URL}/items`, buildItemsWrapper, 'main');
