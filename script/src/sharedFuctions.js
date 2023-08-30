@@ -12,15 +12,15 @@ export const getData = async (endPoint) => {
     }
 };
 
-export const buildContentWrapper = (data,builder) => {
+export const buildContentWrapper = (data, builder) => {
     if (data) {
         return builder(data);
     } else {
-        return buildMessageWrapper(`Something went wrong while getting the data, please try again.`,`error`);
+        return buildMessageWrapper(`Something went wrong while getting the data, please try again.`, `error`);
     }
 }
 
-const buildMessageWrapper = (message,status) => {
+export const buildMessageWrapper = (message, status) => {
     const messageWrapper = document.createElement(`div`);
     messageWrapper.classList.add(`message`);
     messageWrapper.innerText = message;
@@ -34,13 +34,48 @@ const buildMessageWrapper = (message,status) => {
     return messageWrapper;
 }
 
-const displayContent = (content,wrapper) => {
+export const displayContent = (content, wrapperId) => {
+    const wrapper = document.getElementById(wrapperId);
     wrapper.append(content);
 }
 
-export const buildContent = async (dataEndpoint,builder,wrapperId) => {
-    const wrapper = document.getElementById(wrapperId);
+export const buildContent = async (dataEndpoint, builder, wrapperId) => {
     const data = await getData(dataEndpoint);
-    const content = buildContentWrapper(data,builder);
-    displayContent(content,wrapper);
+    const content = buildContentWrapper(data, builder);
+    displayContent(content, wrapperId);
+}
+
+const buildInput = (inputId, placeholder, inputType) => {
+    const inputWrapper = document.createElement(`div`);
+    inputWrapper.classList.add(`input-wrapper`);
+
+    const input = document.createElement(`input`);
+    input.id = inputId;
+    input.type = inputType;
+    if (inputType === `button`) {
+        input.value = placeholder;
+        inputWrapper.append(input);
+        return inputWrapper;
+    } else {
+        input.placeholder = placeholder;
+    }
+
+    const validationMessageWrapper = document.createElement(`div`);
+    validationMessageWrapper.id = inputId + `-validation`;
+
+    inputWrapper.append(input, validationMessageWrapper);
+    return inputWrapper;
+}
+
+export const buildForm = (inputs) => {
+    const formWrapper = document.createElement(`div`);
+    formWrapper.classList.add(`form`);
+
+    inputs.forEach((input) => {
+        formWrapper.append(buildInput(input.id, input.placeholder, input.type));
+    })
+
+    formWrapper.append(buildInput(`submit-button`, `Submit item`, `button`));
+
+    return formWrapper;
 }

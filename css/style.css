@@ -49,6 +49,21 @@ main {
     padding: 30px 60px;
 }
 
+.message {
+    text-align: center;
+    font-size: 1.4rem;
+    text-decoration: underline;
+    padding: 10px;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: rgb(218, 65, 65);
+}
+
 .items-wrapper {
     display: grid;
     justify-content: center;
@@ -130,6 +145,7 @@ main {
 }
 
 @media screen and (max-width: 740px) {
+
     main,
     header {
         padding: 30px 10px;
@@ -137,10 +153,10 @@ main {
 }
 
 @media screen and (max-width: 540px) {
-    body{
+    body {
         min-width: 400px;
     }
-    
+
     header {
         min-width: 380px;
     }

@@ -1,5 +1,3 @@
-
-
 import {buildContent, API_URL} from "./src/sharedFuctions.js";
 
 const redirectToItemPage = (item) => {

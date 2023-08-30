@@ -1,4 +1,4 @@
-import { buildContent, log, API_URL } from "./src/sharedFuctions.js";
+import { buildContent, log, API_URL, buildMessageWrapper } from "./src/sharedFuctions.js";
 
 const url = new URL(window.location.href);
 const itemId = url.searchParams.get('itemId');
@@ -9,7 +9,7 @@ const deleteItem = async (item) => {
     })
     const deletedItem = await response.json();
     if (deletedItem) {
-        main.append(buildMessageWrapper(`Team "${deletedItem.name}" has been deleted`));
+        main.append(buildMessageWrapper(`Item: "${deletedItem.name}", has been deleted`));
     } else {
         main.append(buildMessageWrapper(`Something went wrong, please try again.`, `error`));
     }
