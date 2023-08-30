@@ -1,7 +1,7 @@
 import { buildContent, API_URL } from "./src/sharedFuctions.js";
 
 const redirectToItemPage = (item) => {
-    window.location.replace(`./item.html?itemId=${item.id}`);
+    window.location.replace(`./html/item.html?itemId=${item.id}`);
 }
 
 const buildItemWrapper = (item) => {
